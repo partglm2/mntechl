@@ -1,0 +1,25 @@
+{
+  "name": "mntechl",
+  "displayName": "mynewtechlangage",
+  "description": "mntechl",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "mntechl",
+      "aliases": ["mntechl", "mntechl"],
+      "extensions": ["mntechl"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "mntechl",
+      "scopeName": "source.mntechl",
+      "path": "./syntaxes/mntechl.tmLanguage.json"
+    }]
+  }
+}
