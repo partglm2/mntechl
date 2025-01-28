@@ -3,8 +3,12 @@ class newregex {
         this.inregex = inregex
     }
     
-    test () {
-        return this.inregex + "it's work"
+    static test (inreg) {
+        return inreg + newregex.rl + "it's work"
+    }
+     
+    static pattern (inreg) {
+        return `^${inreg}$`
     }
 
     static rl () {
@@ -12,6 +16,14 @@ class newregex {
     }
     static idk () {
         return "."
+    }
+
+    static ou () {
+        return "|"
+    }
+
+    static hm (num) {
+        return "{num}"
     }
 }
 
