@@ -1,5 +1,5 @@
-const rx = require('./newregex')
-/*
+const help = require('./newregex')
+/* the regex
 rx.rl (rl for return line) mean a return line("\n")
 rx.idk (rl for i don't know) mean a all the charactere(numbers and letters)
 rx.ou mean this | (it's the word OR but for the pattern)
@@ -12,6 +12,10 @@ for example you can use this:
     const reg = rx.pt("#" + rx.rt(rx.to('A','F') + rx.to('a','f') + rx.to(0,9)) + rx.hm(6) + rx.ou() + rx.rt(rx.to('A','F') + rx.to('a','f') + rx.to(0,9)) + rx.hm(3))
     let match = rx.test(reg, "#FFFFFF")
     console.log(match);
-for test if a string is a hexadecimal color or not (it return true or false)
+for test if a string is a hexadecimal color or not (it return true or false)  
+*/
+/* yes i know i have translate in french and i do my explain in english (logic has left the chat)
+
 */
 console.log(rx.test("test"))
+help.fr.
