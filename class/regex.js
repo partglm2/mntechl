@@ -21,6 +21,26 @@ class newregex {
     static ou () {
         return "|"
     }
+    
+    static di() {
+        return "\\d";
+    }
+    
+    static le() {
+        return "\\w";
+    }
+
+    static sp() {
+        return "\\s";
+    }
+
+    static mi(n) {
+        return `{${n},}`;
+    }
+
+    static be(n, m) {
+        return `{${n},${m}}`;
+    }
 
     static hm (num) {
         return `{${num}}`
@@ -34,7 +54,7 @@ class newregex {
         return `${start}-${end}`
     }
     
-    static test (pattern, test) {
+    static testregex (pattern, test) {
         const reg = RegExp(pattern)
         return reg.test(test)
     }

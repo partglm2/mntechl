@@ -1,6 +1,6 @@
 class french {
     static test (infr) {
-        return infr + this.si() + "it's work"
+        return infr + this.continuer() + "it's work"
     }
 
     static si () {return "if"}
@@ -58,4 +58,4 @@ class french {
     static valeur () {return "values"}
 }
 
-module.export = french
+module.exports = french
