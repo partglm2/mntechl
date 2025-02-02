@@ -1,6 +1,9 @@
 const rx = require('./class/regex');
 const fr = require('./class/traduction');
 
+//to start your program you have to use : node start.js app.js
+
+
 /* the regex
 rx.rl (rl for return line) mean a return line("\n")
 rx.idk (idk for i don't know) mean a all the charactere(numbers and letters)
