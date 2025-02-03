@@ -83,6 +83,6 @@ if you don't know what's the word you want here is the full list of words:
     pousser()
     valeur()
         NaN , debugger et pop sont des mots qui ne change pas
-*/
+*/fr.si (true) { console.log("eeeeeeeee")}
 console.log(rx.test("test"));
 console.log(fr.test("test"));

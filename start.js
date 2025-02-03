@@ -12,17 +12,21 @@ if (!scriptToRun) {
 fs.readFile(scriptToRun, 'utf-8', (err, data) => {
     let dictionnaire = Object.getOwnPropertyNames(fr).filter(prop => typeof fr[prop] === "function" && prop !== "length" && prop !== "name" && prop !== "prototype");
     let dic = []
-    Object.keys(dictionnaire).forEach(words =>{
+    dictionnaire.forEach(words =>{
         const wordtoexecute = `fr.${words}`
-        const executed = wordtoexecute
+        const executed = eval(wordtoexecute)
+
+        if (wordtoexecute.includes('fr.test')) return
+        if (wordtoexecute.includes('rx.test')) return
         dic.push({wordtoexecute, executed})
     })
 
     let code = data
 
-    for (const [motFr, motJs] of Object.entries(dic)) {
-        code = code.replace(new RegExp(`\\b${motFr}\\b`, "g"), motJs);
-    }
+    dic.forEach(({wordtoexecute, executed}) => {
+        console.log(wordtoexecute, executed);
+        code = code.replace(new RegExp(`\\b${wordtoexecute}\\b`, "g"), executed);
+    })
 
     eval(code);
 });
