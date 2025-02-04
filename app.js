@@ -98,3 +98,4 @@ fr.definir a = "a"
 fr.si (a == a) {
     console.log("fff");   
 }
+fr.pour ()
