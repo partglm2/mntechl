@@ -93,8 +93,3 @@ if you don't know what's the word you want here is the full list of words:
 //console.log(fr.test("test"));
 
 //you can edit below this line !!!!!!!!!!
-
-fr.definir a = "a"
-fr.si (a == a) {
-    console.log("fff");   
-}
