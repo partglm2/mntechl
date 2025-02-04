@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const rx = require('./class/regex');
 const fr = require('./class/traduction');
 
@@ -31,58 +33,67 @@ yes i know i have translate it in french and i do my explain in english (logic h
 
 all the words are translate in french,
 if you don't know what's the word you want here is the full list of words:
-    test()
-    si()
-    definir()
-    fonction()
-    classe()
-    sinon()
-    essayer()
-    capturer()
-    pour()
-    boucle()
-    arret()
-    continuer()
-    ceci()
-    parent()
-    nouveau()
-    supprimer()
-    dans()
-    retourner()
-    asynchroniser()
-    attendre()
-    promesse()
-    importer()
-    exporter()
-    etendre()
-    statique()
-    vrai()
-    faux()
-    nul()
-    indefinie()
-    infinie()
-    arguments()
-    lancer()
-    construire()
-    depuis()
-    comme()
-    vide()
-    avec()
-    typeDe()
-    faire()
-    de()
-    choisir()
-    case()
-    default()
-    pourchaque()
-    erreur()
-    inclus()
-    joindre()
-    taille()
-    cles()
-    pousser()
-    valeur()
+    fr.test
+    fr.si
+    fr.definir
+    fr.fonction
+    fr.classe
+    fr.sinon
+    fr.essayer
+    fr.capturer
+    fr.pour
+    fr.boucle
+    fr.arret
+    fr.continuer
+    fr.ceci
+    fr.parent
+    fr.nouveau
+    fr.supprimer
+    fr.dans
+    fr.retourner
+    fr.asynchroniser
+    fr.attendre
+    fr.promesse
+    fr.importer
+    fr.exporter
+    fr.etendre
+    fr.statique
+    fr.vrai
+    fr.faux
+    fr.nul
+    fr.indefinie
+    fr.infinie
+    fr.arguments
+    fr.lancer
+    fr.construire
+    fr.depuis
+    fr.comme
+    fr.vide
+    fr.avec
+    fr.typeDe
+    fr.faire
+    fr.de
+    fr.choisir
+    fr.case
+    fr.default
+    fr.pourchaque
+    fr.erreur
+    fr.inclus
+    fr.joindre
+    fr.taille
+    fr.cles
+    fr.pousser
+    fr.valeur
         NaN , debugger et pop sont des mots qui ne change pas
-*/fr.si (true) { console.log("eeeeeeeee")}
-console.log(rx.test("test"));
-console.log(fr.test("test"));
+*/
+
+/////////////////////Delete the // if you want to test the class
+//console.log(rx.test("test"));
+//console.log(fr.test("test"));
+
+//you can edit below this line !!!!!!!!!!
+
+fr.definir a = "a"
+fr.si (a == a) {
+    console.log("fff");   
+}
