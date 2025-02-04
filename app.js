@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* eslint-disable */
 
 const rx = require('./class/regex');
 const fr = require('./class/traduction');
