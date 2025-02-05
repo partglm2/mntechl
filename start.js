@@ -5,7 +5,7 @@ const fr = require('./class/traduction')
 const scriptToRun = process.argv[2];
 
 function tolog (input) {
-    if (process.argv[3] == "log") {
+    if (process.argv[3] == "--log") {
         console.log(input);
     }
 }
@@ -13,6 +13,24 @@ function tolog (input) {
 if (!scriptToRun) {
     console.error("Erreur : Vous devez spécifier un fichier à exécuter !");
     process.exit(1);
+}
+
+async function tips (data) {
+    const a = await fs.promises.readFile("class/tips.txt", 'utf-8')
+    console.log(a)
+
+    const c = await fs.promises.writeFile('class/tipsshow.txt', "1", 'utf-8')
+    
+    process.exit(1)
+}
+async function tipsfunc () {
+    const b = await fs.promises.readFile("class/tipsshow.txt", 'utf-8')
+    if (b == '0') {
+        tips(b)
+    }
+}
+if (process.argv[4] !== "--noTips") {
+    tipsfunc();
 }
 
 fs.readFile(scriptToRun, 'utf-8', (err, data) => {

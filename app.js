@@ -3,6 +3,8 @@
 
 const rx = require('./class/regex');
 const fr = require('./class/traduction');
+const {afficher, afficherErreur, afficherAttention, afficherTableau} 
+         = require('./class/console')
 
 //to start your program you have to use : node start.js app.js
 
@@ -89,8 +91,9 @@ if you don't know what's the word you want here is the full list of words:
 */
 
 /////////////////////Delete the // if you want to test the class
-console.log(rx.test("test"));
-console.log(fr.test("test"));
+//console.log(rx.test("test"));
+//console.log(fr.test("test"));
+//afficher("test")
 
 //use node start.js app.js to test you program 
 //you can edit below this line !!!!!!!!!!
