@@ -29,8 +29,13 @@ async function tipsfunc () {
         tips(b)
     }
 }
-if (process.argv[4] !== "--noTips") {
+if (!process.argv.includes("--noTips")) {
     tipsfunc();
+}
+if(process.argv.includes("--Tips")) {
+    fs.readFile('class/tips.txt', 'utf-8', (err, data) => {
+        console.log(data)
+    })
 }
 
 fs.readFile(scriptToRun, 'utf-8', (err, data) => {
