@@ -19,11 +19,11 @@ rx.le (le for letter) mean all the letter so it can be E f Z i p a or whatever
 rx.hm (hm for how much) is for having the same pattern but multiple time the arguments is the how much time you want the pattern
 rx.rt (rt for part) is for a member of the pattern 
 rx.to is for a letter or number to another letter or number example rx.to(0,6) return true for all number between 0 and 6 so the number 7 return false
-rx.testpattern is for testing your pattern
+rx.testregex is for testing your pattern
 
 for example you can use this:
     const reg = rx.pt("#" + rx.rt(rx.to('A','F') + rx.to('a','f') + rx.to(0,9)) + rx.hm(6) + rx.ou() + rx.rt(rx.to('A','F') + rx.to('a','f') + rx.to(0,9)) + rx.hm(3))
-    let match = rx.test(reg, "#FFFFFF")
+    let match = rx.testregex(reg, "#FFFFFF")
     console.log(match);
 for test if a string is a hexadecimal color or not (it return true or false)  
 */
@@ -89,7 +89,8 @@ if you don't know what's the word you want here is the full list of words:
 */
 
 /////////////////////Delete the // if you want to test the class
-//console.log(rx.test("test"));
-//console.log(fr.test("test"));
+console.log(rx.test("test"));
+console.log(fr.test("test"));
 
+//use node start.js app.js to test you program 
 //you can edit below this line !!!!!!!!!!

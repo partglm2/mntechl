@@ -1,6 +1,6 @@
 class newregex {
     static test (inreg) {
-        return inreg + this.rl() + "it's work"
+        return `regex (rx): (${inreg}${this.rl()}it's work)`
     }
      
     static pt (inreg) {

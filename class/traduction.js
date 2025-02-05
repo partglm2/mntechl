@@ -1,6 +1,6 @@
 class french {
     static test (infr) {
-        return infr + " " + this.continuer() + " " + "it's work"
+        return `french (fr): (${infr} ${this.continuer()} it's work)`
     }
 
     static si () {return "if"}
