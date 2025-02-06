@@ -90,6 +90,23 @@ if you don't know what's the word you want here is the full list of words:
         NaN , debugger et pop sont des mots qui ne change pas
 */
 
+
+/*
+    for show a message in the console you have to use this:
+        afficher() for a standard color
+        afficherAttention() for a orange color
+        afficherErreur() for a red color
+    example:
+        afficher("HelloWorld")
+        afficherAttention("HelloWorld")
+        afficherErreur("HelloWorld")    
+
+    if you want to have a painting in the console you can use this:
+        afficherTableau()
+    example: 
+        afficherTableau("MyArray")
+*/
+
 /////////////////////Delete the // if you want to test the class
 //console.log(rx.test("test"));
 //console.log(fr.test("test"));
