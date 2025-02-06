@@ -104,7 +104,7 @@ if you don't know what's the word you want here is the full list of words:
     if you want to have a painting in the console you can use this:
         afficherTableau()
     example: 
-        afficherTableau("MyArray")
+        afficherTableau("MyObject")
 */
 
 /////////////////////Delete the // if you want to test the class
@@ -112,5 +112,5 @@ if you don't know what's the word you want here is the full list of words:
 //console.log(fr.test("test"));
 //afficher("test")
 
-//use node start.js app.js to test you program 
-//you can edit below this line !!!!!!!!!!
+////use node start.js app.js to test you program 
+////you can edit below this line !!!!!!!!!!
