@@ -51,8 +51,9 @@ fs.readFile(scriptToRun, 'utf-8', (err, data) => {
 
     let code = data
 
+    console.table(dic)
+
     dic.forEach(({wordtoexecute, executed}) => {
-        tolog({wordtoexecute, executed});
         code = code.replace(new RegExp(`\\b${wordtoexecute}\\b`, "g"), executed);
     })
 
