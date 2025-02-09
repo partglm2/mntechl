@@ -1,7 +1,7 @@
 const fs = require('fs')
 const fr = require('./class/traduction')
 
-// Récupère le deuxième argument (index 2, car 0 = node, 1 = start.js)
+// Récupère le deuxième argument (index 2, car 0 = node, 1 = start.js) 
 const scriptToRun = process.argv[2];
 
 function tolog (input) {
