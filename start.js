@@ -5,9 +5,9 @@ const fr = require('./class/traduction')
 // Récupère le deuxième argument (index 2, car 0 = node, 1 = start.js)
 const scriptToRun = process.argv[2];
 
-function tolog (input) {
+function tologtable (input) {
     if (process.argv[3] == "--log") {
-        console.log(input);
+        console.table(input);
     }
 }
 
@@ -52,7 +52,7 @@ fs.readFile(scriptToRun, 'utf-8', (err, data) => {
 
     let code = data
 
-    console.table(dic)
+    tologtable(dic)
 
     dic.forEach(({wordtoexecute, executed}) => {
         code = code.replace(new RegExp(`\\b${wordtoexecute}\\b`, "g"), executed);
