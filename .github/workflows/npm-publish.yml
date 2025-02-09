@@ -27,9 +27,7 @@ jobs:
         run: npm test
 
       - name: Debug NPM Token
-        run: echo "Token length: ${#NODE_AUTH_TOKEN}"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "Token is set: ${{ secrets.NPM_TOKEN != '' }}"
 
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
