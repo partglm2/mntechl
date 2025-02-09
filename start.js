@@ -1,3 +1,4 @@
+//DO NOT EDIT
 const fs = require('fs')
 const fr = require('./class/traduction')
 
