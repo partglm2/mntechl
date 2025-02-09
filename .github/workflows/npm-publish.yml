@@ -25,23 +25,23 @@ jobs:
 
       - name: Run tests
         run: npm test
-        
-        - name: Authenticate with npm
-  run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-  env:
-    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-        - name: Debug NPM Token
-          run: echo "Token length: ${#NODE_AUTH_TOKEN}"
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Debug NPM Token
+        run: echo "Token length: ${#NODE_AUTH_TOKEN}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Verify npm authentication
         run: npm whoami
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN2 }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN2 }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
