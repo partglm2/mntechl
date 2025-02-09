@@ -27,7 +27,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - name: Set up NPM authentication
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+        run: npm login --registry=https://registry.npmjs.org/ \
+  --username=${{ secrets.NPM_USERNAME }} --password=${{ secrets.NPM_MDP }} --email=${{ secrets.NPM_EMAIL }}
+
+
       - name: Publish to NPM
         run: npm publish
         env:
