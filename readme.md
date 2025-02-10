@@ -7,4 +7,4 @@ you can test it in the app.js (all thing is write in it)
     readme.md
     jsconfig.json
     app.js (only the beginning, you edit it when after the line said it)
-use node start.js app.js to test you program 
+use npm run start to test you program 
