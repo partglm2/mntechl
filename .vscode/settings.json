@@ -1,0 +1,9 @@
+{
+    "git.autofetch": true,
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "javascript.validate.enable": false,
+    "workbench.colorTheme": "Default Dark Modern",
+    "[javascript]": {
+        "editor.maxTokenizationLineLength": 2500
+    }
+}

@@ -1,18 +1,42 @@
+//DO NOT EDIT
 const fs = require('fs')
 const fr = require('./class/traduction')
 
 // Récupère le deuxième argument (index 2, car 0 = node, 1 = start.js)
 const scriptToRun = process.argv[2];
 
-function tolog (input) {
-    if (process.argv[3] == "log") {
-        console.log(input);
+function tologtable (input) {
+    if (process.argv[3] == "--log") {
+        console.table(input);
     }
 }
 
 if (!scriptToRun) {
     console.error("Erreur : Vous devez spécifier un fichier à exécuter !");
     process.exit(1);
+}
+
+async function tips (data) {
+    const a = await fs.promises.readFile("class/tips.txt", 'utf-8')
+    console.log(a)
+
+    const c = await fs.promises.writeFile('class/tipsshow.txt', "1", 'utf-8')
+    
+    process.exit(1)
+}
+async function tipsfunc () {
+    const b = await fs.promises.readFile("class/tipsshow.txt", 'utf-8')
+    if (b == '0') {
+        tips(b)
+    }
+}
+if (!process.argv.includes("--noTips")) {
+    tipsfunc();
+}
+if(process.argv.includes("--Tips")) {
+    fs.readFile('class/tips.txt', 'utf-8', (err, data) => {
+        console.log(data)
+    })
 }
 
 fs.readFile(scriptToRun, 'utf-8', (err, data) => {
@@ -28,8 +52,9 @@ fs.readFile(scriptToRun, 'utf-8', (err, data) => {
 
     let code = data
 
+    tologtable(dic)
+
     dic.forEach(({wordtoexecute, executed}) => {
-        tolog({wordtoexecute, executed});
         code = code.replace(new RegExp(`\\b${wordtoexecute}\\b`, "g"), executed);
     })
 
