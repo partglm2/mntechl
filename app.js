@@ -118,13 +118,26 @@ if you don't know what's the word you want here is the full list of words:
 const express = require('express')
 const http = require('http');
 const path = require('path');
+const socketIO = require('socket.io')
 
 const app = express()
 const server = http.createServer(app)
+const io = socketIO(server)
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json())
 const htmlpath = '/html/'
+
+io.on('connection', (socket) => {
+    socket.on('morpion', ({player, caseplayed}) => {
+        console.log('a' + player + caseplayed)
+    })
+})
+
+app.post('morpion', (req, res) => {
+    const { player, caseplayed } = req.body
+    console.log(player, caseplayed)
+})
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, htmlpath, 'home.html'))

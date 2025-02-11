@@ -4,20 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tic tac toe</title>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <style>
+      .morpion {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        width: max-content;
+      }
+
+      .morpion button {
+        width: 100px;
+        height: 100px;
+        font-size: 2rem;
+        font-weight: bold;
+        border: 2px solid #333;
+        background-color: #f8f8f8;
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.1s;
+        position: relative;
+      }
+
+      .morpion button:hover {
+        background-color: #ddd;
+      }
+
+      .morpion button:active {
+        transform: scale(0.95);
+      }
+
+      /* Ajoute un rond rouge lorsqu'on clique */
+      .morpion button.clicked::after {
+        content: "";
+        width: 60px;
+        height: 60px;
+        border: 10px solid red;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+    </style>      
 </head>
 <body>
-    <button class="case" id="case1"></button>
-    <button class="case" id="case2"></button>
-    <button class="case" id="case3"></button>
-    <button class="case" id="case4"></button>
-    <button class="case" id="case5"></button>
-    <button class="case" id="case6"></button>
-    <button class="case" id="case7"></button>
-    <button class="case" id="case8"></button>
-    <button class="case" id="case9"></button>
+    <div class="morpion">
+        <button class="case" id="case1"></button>
+        <button class="case" id="case2"></button>
+        <button class="case" id="case3"></button>
+        <button class="case" id="case4"></button>
+        <button class="case" id="case5"></button>
+        <button class="case" id="case6"></button>
+        <button class="case" id="case7"></button>
+        <button class="case" id="case8"></button>
+        <button class="case" id="case9"></button>
+      </div>
     <script>
+        const socket = io();
+
         const classcase = document.querySelectorAll('.case')
-        console.log(classcase)
+        classcase.forEach(el => {
+          el.addEventListener('click', async (event) => {
+
+            el.classList.add('clicked')
+            let player = new URLSearchParams(window.location.search);
+            player = player.get('player')
+
+            const response = await fetch('/morpion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ player: player, caseplayed: el.id})
+            });
+
+            socket.emit('morpion',{ player: player, caseplayed: el.id })
+          })
+        })
     </script>
 </body>
 </html>
