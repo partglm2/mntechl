@@ -128,15 +128,20 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json())
 const htmlpath = '/html/'
 
-io.on('connection', (socket) => {
-    socket.on('morpion', ({player, caseplayed}) => {
-        console.log('a' + player + caseplayed)
-    })
-})
+let caseplayeds = []
+let playerplayed = null
 
-app.post('morpion', (req, res) => {
-    const { player, caseplayed } = req.body
-    console.log(player, caseplayed)
+io.on('connection', (socket) => {
+    socket.on('morpion', ({player, caseplayedid}) => {
+        console.log(player +"  "+ caseplayedid)
+
+        if (caseplayeds.includes(caseplayedid)) return
+        if (playerplayed == player) return
+        
+        playerplayed = player 
+        caseplayeds.push(caseplayedid)
+        io.emit('result', ({player, caseplayedid}))
+    })
 })
 
 app.get('/', (req, res) => {

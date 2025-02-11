@@ -38,18 +38,33 @@
       }
 
       /* Ajoute un rond rouge lorsqu'on clique */
-      .morpion button.clicked::after {
+      .morpion button.clickedred::after {
         content: "";
         width: 60px;
         height: 60px;
-        border: 10px solid red;
+        border: 10px solid rgb(214, 30, 30);
         border-radius: 50%;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
       }
+      
+      .morpion button.clickedblack::after,
+      .morpion button.clickedblack::before {
+        content: "";
+        width: 60px;
+        height: 10px;
+        background-color: rgb(0, 0, 0);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
 
+      .morpion button.clickedblack::before {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
     </style>      
 </head>
 <body>
@@ -70,21 +85,15 @@
         const classcase = document.querySelectorAll('.case')
         classcase.forEach(el => {
           el.addEventListener('click', async (event) => {
-
-            el.classList.add('clicked')
-            let player = new URLSearchParams(window.location.search);
-            player = player.get('player')
-
-            const response = await fetch('/morpion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ player: player, caseplayed: el.id})
-            });
-
-            socket.emit('morpion',{ player: player, caseplayed: el.id })
+            this.player = new URLSearchParams(window.location.search);
+            this.player = player.get('player')
+            socket.emit('morpion',{ player: this.player, caseplayedid: el.id})
           })
+        })
+        socket.on('result', ({player, caseplayedid}) => {
+          const caseplayed = document.getElementById(caseplayedid)
+          if (player == '1') caseplayed.classList.add('clickedred');
+          if (player == '2') caseplayed.classList.add('clickedblack')
         })
     </script>
 </body>
