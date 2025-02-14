@@ -128,21 +128,48 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json())
 const htmlpath = '/html/'
 
-let caseplayeds = []
+let caseplayeds1 = []
+let caseplayeds2 = []
 let playerplayed = null
+const winningCombinations = [
+    ['0', '1', '2'], ['3', '4', '5'], ['6', '7', '8'], // Lignes
+    ['0', '3', '6'], ['1', '4', '7'], ['2', '5', '8'], // Colonnes
+    ['0', '4', '8'], ['2', '4', '6'] // Diagonales
+];
+
 
 io.on('connection', (socket) => {
     socket.on('morpion', ({player, caseplayedid}) => {
         console.log(player +"  "+ caseplayedid)
 
-        if (caseplayeds.includes(caseplayedid)) return
         if (playerplayed == player) return
+        if (caseplayeds1.includes(caseplayedid)) return
+        if (caseplayeds2.includes(caseplayedid)) return
         
         playerplayed = player 
-        caseplayeds.push(caseplayedid)
+        if (playerplayed == '1') caseplayeds1.push(caseplayedid)
+        if (playerplayed == '2') caseplayeds2.push(caseplayedid)
+
         io.emit('result', ({player, caseplayedid}))
-    })
-})
+
+        if (checkWinner(player)) {
+            io.emit('winner', player);
+        }
+    });
+});
+
+function checkWinner(player) {
+    if (player == '1') {   
+        return winningCombinations.some(combination =>
+            combination.every(index => caseplayeds1.includes(index))
+        )
+    }
+    if (player == '2') {   
+        return winningCombinations.some(combination =>
+            combination.every(index => caseplayeds2.includes(index))
+        )
+    }
+}
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, htmlpath, 'home.html'))
