@@ -56,6 +56,8 @@ class french {
     static pousser () {return "push"}
     //static pop () {return "pop"}
     static valeur () {return "values"}
+    static ou () {return"||"}
+    static et () {return"&&"}
 }
 
 module.exports = french
