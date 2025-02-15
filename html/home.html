@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tic tac toe</title>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <style>
+      .morpion {
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        width: max-content;
+      }
+
+      .morpion button {
+        width: 100px;
+        height: 100px;
+        font-size: 2rem;
+        font-weight: bold;
+        border: 2px solid #333;
+        background-color: #f8f8f8;
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.1s;
+        position: relative;
+      }
+
+      .morpion button:hover {
+        background-color: #ddd;
+      }
+
+      .morpion button:active {
+        transform: scale(0.95);
+      }
+
+      /* Ajoute un rond rouge lorsqu'on clique */
+      .morpion button.clickedred::after {
+        content: "";
+        width: 60px;
+        height: 60px;
+        border: 10px solid rgb(214, 30, 30);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
+      .morpion button.clickedblack::after,
+      .morpion button.clickedblack::before {
+        content: "";
+        width: 60px;
+        height: 10px;
+        background-color: rgb(0, 0, 0);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .morpion button.clickedblack::before {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    </style>      
+</head>
+<body>
+    <div class="morpion">
+        <button class="case" id="case1"></button>
+        <button class="case" id="case2"></button>
+        <button class="case" id="case3"></button>
+        <button class="case" id="case4"></button>
+        <button class="case" id="case5"></button>
+        <button class="case" id="case6"></button>
+        <button class="case" id="case7"></button>
+        <button class="case" id="case8"></button>
+        <button class="case" id="case9"></button>
+      </div>
+    <script>
+        const socket = io();
+
+        const classcase = document.querySelectorAll('.case')
+        classcase.forEach(el => {
+          el.addEventListener('click', async (event) => {
+            this.player = new URLSearchParams(window.location.search);
+            this.player = player.get('player')
+            socket.emit('morpion',{ player: this.player, caseplayedid: el.id})
+          })
+        })
+        socket.on('result', ({player, caseplayedid}) => {
+          const caseplayed = document.getElementById(caseplayedid)
+          if (player == '1') caseplayed.classList.add('clickedred');
+          if (player == '2') caseplayed.classList.add('clickedblack')
+        }) 
+        socket.on('winner', (player) => {
+          alert(`Le joueur ${player} a gagné !`);
+          socket.disconnect(); // Empêche tout autre coup après une victoire
+        });
+    </script>
+</body>
+</html>
